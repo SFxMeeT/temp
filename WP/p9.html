@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>Practical 9: Frameset</title>
+    <style>
+        #head {
+            background-color: #213555;
+        }
+        #toc {
+            background-color: #F5ECD5;
+        }
+        #content {
+            background-color: #FFFAEC;
+        }
+    </style>
+</head>
+<frameset rows="20%, 80%" border="1">
+    <frame src="head.html" id="head" name="headFrame">
+
+    <frameset cols="30%, 70%">
+        <frame src="toc.html" id="toc" name="tocFrame">
+
+        <frame src="content.html" id="content" name="contentFrame">
+    </frameset>
+</frameset>
+</html>
