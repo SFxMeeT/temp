@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Change Every 1 Millisecond</title>
+    <style>
+        #image-container {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="image-container">
+        <img id="image" src="https://unsplash.com/photos/yellow-porsche-911-on-road-during-daytime-DwxlhTvC16Q.png" alt="Image" />
+    </div>
+
+    <script>
+     
+        var imgArr = [
+            "https://unsplash.com/photos/running-black-porsche-sedan-3ZUsNJhi_Ik.png",
+            "https://unsplash.com/photos/blue-chevrolet-coupe-2AovfzYV3rc.png",
+            "https://unsplash.com/photos/gray-sports-coupe-parking-during-daytime-6lSBynPRaAQ.png",
+            "https://unsplash.com/photos/an-orange-and-white-car-parked-in-front-of-a-body-of-water-Ynycw1OzZdI.png",
+            "https://unsplash.com/photos/red-mercedes-benz-coupe-on-road-qyfco1nfMtg.png"
+        ];
+
+        var index = 0; 
+
+        function changeImage() {
+            var imgElement = document.getElementById('image');
+            imgElement.src = imgArr[index];
+            index = (index + 1) % imgArr.length;
+
+            setTimeout(changeImage, 1000);
+        }
+
+        changeImage();
+    </script>
+
+</body>
+</html>

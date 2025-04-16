@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Practical 13: Days Until Birthday</title>
+</head>
+<body>
+    <h1>Calculate Days Until Your Birthday</h1>
+
+    <label for="month">Enter your birth month (1-12): </label>
+    <input type="number" id="month" min="1" max="12" required><br><br>
+
+    <label for="day">Enter your birth day (1-31): </label>
+    <input type="number" id="day" min="1" max="31" required><br><br>
+
+    <button onclick="showDaysLeft()">Calculate Days Left</button>
+    <p id="result"></p>
+
+    <script>
+        function daysUntilBirthday(birthdayMonth, birthdayDay) {
+    
+            const today = new Date();
+            var currentYear = today.getFullYear();
+
+            var nextBirthday = new Date(currentYear, birthdayMonth - 1, birthdayDay);
+          
+            if (today > nextBirthday) {
+                nextBirthday.setFullYear(currentYear + 1);
+            }
+
+            const timeDifference = nextBirthday - today;
+
+            const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
+            return daysLeft;
+        }
+
+        function showDaysLeft() {
+         
+            const month = parseInt(document.getElementById("month").value);
+            const day = parseInt(document.getElementById("day").value);
+
+            if (!month || !day || month < 1 || month > 12 || day < 1 || day > 31) {
+                document.getElementById("result").innerHTML = "Please enter a valid month and day.";
+                return;
+            }
+            
+            const daysLeft = daysUntilBirthday(month, day);
+            
+            document.getElementById("result").innerHTML = `There are  ${daysLeft} days left until your birthday!`;
+        }
+    </script>
+</body>
+</html>

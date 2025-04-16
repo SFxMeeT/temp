@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>Practical 11: JavaScript</title>
+<body>
+  <h1>JavaScript Application Example</h1>
+</body>
+    <script>
+
+        var number1 = parseInt(prompt("Enter the First Number: "));
+        var number2 = parseInt(prompt("Enter the Second Number: "));
+        var result;
+
+        var username = prompt("Enter name : ");
+        alert("Hello " + username + "!");
+
+        document.write("<b>First Number is : </b>" + number1 + "<br>");
+        document.write("<b>Second Number is : </b>" + number2 + "<br>");
+
+        result = number1 + number2; 
+        document.write("Addition : " + result + "<br>");
+
+        result = number1 - number2; 
+        document.write("Subtraction : " + result + "<br>" );
+
+        result = number1 * number2;  
+        document.write("Multiplication : " + result + "<br>");
+
+        result = number1 / number2;  
+        document.write("Division : " + parseInt(result) + "<br>");
+
+        document.write("<b>Loop for Counting :</b> <br>");
+        for(var i=1; i<=5; i++){
+          document.write(i+"<br>");
+        }
+
+        var color = ["Red","Green","Blue","Yellow","Black"];
+        document.write("<b>Array of Colors is : </b>" + color + "<br>");
+
+        //for user define function
+        function Username(name){
+          return "Hello " + name + "!";
+        }
+        //call function
+        var greetingMessage = Username(username);
+        alert(greetingMessage);
+
+        var uppercase = username.toUpperCase();
+        document.write("<b>Username in Uppercase : </b>" + uppercase + "<br>");
+
+        var randomnumber = Math.random();
+        document.write("<b>Random Number is : </b>" + randomnumber + "<br>");
+
+    </script>
+</head>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical 12: JavaScript</title>
+</head>
+
+<body>
+    <form method="post" onSubmit="return formValidate()" name="myform">
+        <label for="email">Email: </label>
+        <input name="email" type="text" /><br><br>
+        <label for="phoneno">Phone no.: </label>
+        <select name="country">
+            <option value="">Code</option>
+            <option value="91">+91</option>
+            <option value="92">+92</option>
+            <option value="1">+1</option>
+            <option value="88">+88</option>
+        </select>
+        <input name="phone" type="text" /><br><br>
+        <label for="pwd">Password: </label>
+        <input name="pwd" type="password" /><br><br>
+        <input value="submit" type="submit">
+    </form>
+
+    <script>
+        function formValidate() {
+            myForm = document.myform;
+
+            var check = true;
+            var password = myForm.pwd.value;
+            var mail = myForm.email.value;
+            var phone = myForm.phone.value;
+            var code = myForm.country.value;
+
+            if (!testMail(mail)) {
+                alert("Wrong Email!");
+                myForm.email.focus();
+                check = false;
+            } else {
+                alert("Correct Email!");
+            }
+
+            if (code === "") {
+                alert("Select a country code!");
+                check = false;
+            }
+
+            if (phone.length != 10) {
+                alert("Enter a valid 10-digit mobile number");
+                check = false;
+            }
+
+            if (password != "1234") {
+                alert("Wrong Password!");
+                myForm.pwd.focus();
+                check = false;
+            } else {
+                alert("Correct Password!");
+            }
+
+            return check;
+        }
+
+        function testMail(chkMail) {
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return emailPattern.test(chkMail);
+        }
+    </script>
+</body>
+
+</html>
