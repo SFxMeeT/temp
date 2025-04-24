@@ -1,0 +1,120 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Shopping</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #fdfbf6;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .product-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 250px;
+            background-color: #e9eee5;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .product-title {
+            font-size: 20px;
+            margin: 15px 0 10px;
+        }
+
+        .price {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #205d3d;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .view-cart {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .view-cart a {
+            font-size: 18px;
+            color: #205d3d;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Our Jewellery Products</h2>
+
+    <div class="product-grid">
+        <div class="card">
+            <img src="img/01.jpg" alt="Earrings">
+            <div class="product-title">Earrings</div>
+            <div class="price">Rs. 47,126</div>
+            <a href="index.jsp?item=Earrings" class="btn">Add to Cart</a>
+        </div>
+        <div class="card">
+            <img src="img/02.jpg" alt="Ring">
+            <div class="product-title">Ring</div>
+            <div class="price">Rs. 65,557</div>
+            <a href="index.jsp?item=Ring" class="btn">Add to Cart</a>
+        </div>
+        <div class="card">
+            <img src="img/03.jpg" alt="Necklace1">
+            <div class="product-title">Necklace</div>
+            <div class="price">Rs. 29,340</div>
+            <a href="index.jsp?item=Necklace1" class="btn">Add to Cart</a>
+        </div>
+        <div class="card">
+            <img src="img/04.jpg" alt="Necklace2">
+            <div class="product-title">Necklace</div>
+            <div class="price">Rs. 42,500</div>
+            <a href="index.jsp?item=Necklace2" class="btn">Add to Cart</a>
+        </div>
+    </div>
+
+    <div class="view-cart">
+        <a href="cart.jsp">View Cart</a>
+    </div>
+
+    <%
+        String item = request.getParameter("item");
+        if (item != null) {
+            String itemValue = (String) session.getAttribute(item);
+            if (itemValue == null) {
+                session.setAttribute(item, "1");
+            } else {
+                int count = Integer.parseInt(itemValue);
+                session.setAttribute(item, String.valueOf(count + 1));
+            }
+            out.println("<p style='text-align:center; color:green;'>Item added: " + item + "</p>");
+        }
+    %>
+</body>
+</html>
